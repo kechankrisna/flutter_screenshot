@@ -1,7 +1,6 @@
 name: flutter_screenshot
-description: Flutter screenshot originally from screenshot package.
+description: Flutter screenshot originally from screenshot package by extend more methods.
 version: 0.0.1
-author:
 homepage:
 
 environment:

@@ -1,14 +1,51 @@
 # flutter_screenshot
 
-A new flutter plugin project.
+Flutter screenshot originally from screenshot package by extend more methods.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+```
+    void _testScreenshot() {
+    
+    screenshotController.captureAsFile().then((File file){
+      print(file);
+    });
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+    screenshotController.captureAsByteData().then((ByteData byteData){
+      print(byteData);
+    });
+
+    screenshotController.captureAsUint8List().then((Uint8List uint8List){
+      print(Uint8List);
+    });
+
+    screenshotController.captureAsUiImage().then((res) {
+      ui.Image image = res;
+      print(image);
+    });
+  }
+
+```
+
+```
+    body: Container(
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ScreenshotContainer(
+                controller: screenshotController,
+                child: Text("Sreenshot me now"),
+              ),
+              
+              
+              RaisedButton(
+                onPressed: () {
+                  _testScreenshot();
+                },
+                child: Text("Pressed me"),
+              ),
+            ],
+          ),
+        )
+```
