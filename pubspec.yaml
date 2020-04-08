@@ -1,7 +1,7 @@
 name: flutter_screenshot
 description: Flutter screenshot originally from screenshot package by extend more methods.
-version: 0.0.1
-homepage: https://github.com/kechankrisna/flutter_screenshot.git
+version: 0.0.2
+homepage: https://github.com/kechankrisna/flutter_screenshot
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
