@@ -1,0 +1,17 @@
+name: flutter_screenshot
+description: Flutter screenshot originally from screenshot package.
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  path_provider: ^1.6.5    
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
