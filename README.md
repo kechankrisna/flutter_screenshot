@@ -5,6 +5,7 @@ Flutter screenshot originally from screenshot package by extend more methods.
 ## Getting Started
 
 ```
+    //single screenshot
     void _testScreenshot() {
     
     screenshotController.captureAsFile().then((File file){
@@ -48,4 +49,50 @@ Flutter screenshot originally from screenshot package by extend more methods.
             ],
           ),
         )
+```
+
+
+```
+  bool _isGenrated = false;
+  List<ScreenshotController> screenshotControllers =
+      List<ScreenshotController>.generate(5, (i) => ScreenshotController());
+  List<Uint8List> _datas = [];
+
+  //multi screenshot
+  void _testMultiScreenshot() async {
+    List<Uint8List> datas = await Future.wait(screenshotControllers
+        .map((ScreenshotController screenshotController) async =>
+            await screenshotController.captureAsUint8List(pixelRatio: 10))
+        .toList());
+    print(datas);
+    setState(() {
+      _datas = datas;
+      _isGenrated = true;
+    });
+  }
+```
+
+```
+  body: Container(
+          alignment: Alignment.center,
+          child: _isGenrated && _datas.length > 0
+              ? ListView.builder(
+              itemCount: _datas.length,
+              itemBuilder: (_, index) {
+                  return Image.memory(_datas[index]);
+                })
+              : ListView.builder(
+                  itemCount: screenshotControllers.length,
+                  itemBuilder: (_, index) {
+                    return ScreenshotContainer(
+                      controller: screenshotControllers[index],
+                      child: Text("Sreenshot me now", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blue),),
+                    );
+                  }),
+    floatingActionButton: RaisedButton(
+          onPressed: () {
+            _testMultiScreenshot();
+          },
+          child: Text("Pressed me"),
+        ),              
 ```
