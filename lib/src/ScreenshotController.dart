@@ -29,7 +29,7 @@ class ScreenshotController {
           path = '$directory/$fileName.png';
         }
         File imgFile = File(path);
-        await imgFile.writeAsBytes(pngBytes).then((onValue) {});
+        await imgFile.writeAsBytes(pngBytes);
         return imgFile;
       } catch (Exception) {
         throw (Exception);
@@ -79,8 +79,7 @@ class ScreenshotController {
         RenderRepaintBoundary boundary =
             this.containerKey.currentContext.findRenderObject();
         ui.Image image = await boundary.toImage(pixelRatio: pixelRatio);
-        ByteData byteData =
-            await image.toByteData(format: ui.ImageByteFormat.png);
+        ByteData byteData =await image.toByteData(format: ui.ImageByteFormat.png);
         Uint8List pngBytes = byteData.buffer.asUint8List();
         return pngBytes;
       } catch (Exception) {
