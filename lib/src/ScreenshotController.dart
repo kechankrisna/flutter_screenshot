@@ -8,7 +8,12 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:ui' as ui;
 
 class ScreenshotController {
-  GlobalKey containerKey = GlobalKey();
+
+  GlobalKey containerKey;
+
+  ScreenshotController({GlobalKey key}){
+    containerKey = key ?? GlobalKey();
+  }
 
   Future<File> captureAsFile(
       {String path = "",
