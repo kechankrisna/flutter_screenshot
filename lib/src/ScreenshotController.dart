@@ -8,10 +8,9 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:ui' as ui;
 
 class ScreenshotController {
-
   GlobalKey containerKey;
 
-  ScreenshotController({GlobalKey key}){
+  ScreenshotController({GlobalKey key}) {
     containerKey = key ?? GlobalKey();
   }
 
@@ -84,7 +83,8 @@ class ScreenshotController {
         RenderRepaintBoundary boundary =
             this.containerKey.currentContext.findRenderObject();
         ui.Image image = await boundary.toImage(pixelRatio: pixelRatio);
-        ByteData byteData =await image.toByteData(format: ui.ImageByteFormat.png);
+        ByteData byteData =
+            await image.toByteData(format: ui.ImageByteFormat.png);
         Uint8List pngBytes = byteData.buffer.asUint8List();
         return pngBytes;
       } catch (Exception) {
