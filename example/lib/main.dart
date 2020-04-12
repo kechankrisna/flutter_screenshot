@@ -6,7 +6,6 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenshot/flutter_screenshot.dart';
 import 'dart:ui' as ui;
-import 'dart:math';
 
 void main() => runApp(MyApp());
 
